@@ -18,7 +18,7 @@ Este projeto aborda uma causa social relevante, incentivando e facilitando doaç
 Tecnologias Utilizadas
 - Java: Linguagem de programação principal para desenvolvimento do sistema.
 - SQLite/PostgreSQL: Banco de dados para armazenar informações dos usuários e doações.
-- GitHub: Repositório de código e colaboração entre os membros da equipe.
+- GitHub: Repositório de código e colaboração entre os membros da equipe..
 
 Princípios de SOLID aplicados
 - Responsabilidade Única (Single Responsibility Principle): Cada classe foi projetada para ter uma única responsabilidade. Por exemplo, a classe de doações cuida apenas da lógica relacionada às doações.
