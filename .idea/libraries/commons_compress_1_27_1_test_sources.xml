@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="commons-compress-1.27.1-test-sources">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Desktop/LIBS/common compress/commons-compress-1.27.1/commons-compress-1.27.1-tests.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/LIBS/common compress/commons-compress-1.27.1/commons-compress-1.27.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Desktop/LIBS/common compress/commons-compress-1.27.1/commons-compress-1.27.1-test-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/LIBS/common compress/commons-compress-1.27.1/commons-compress-1.27.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -7,5 +7,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="commons-compress-1.27.1-test-sources" level="project" />
+    <orderEntry type="library" name="commons-io-2.17.0-sources" level="project" />
+    <orderEntry type="library" name="commons-collections4-4.5.0-M2-sources" level="project" />
+    <orderEntry type="library" name="commons-io-2.17.0-sources1" level="project" />
+    <orderEntry type="library" name="poi-examples-5.2.3" level="project" />
+    <orderEntry type="library" name="ant-1.10.14" level="project" />
   </component>
 </module>
