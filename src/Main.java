@@ -2,12 +2,14 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
 
     private static final String FILE_PATH = "usuarios.xlsx";
+    private static final String AGENDAMENTO_PATH = "agendamentos.xlsx";
 
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
@@ -18,6 +20,7 @@ public class Main {
             System.out.println("2 - Ler todos os usuários (Read)");
             System.out.println("3 - Atualizar um usuário (Update)");
             System.out.println("4 - Excluir um usuário (Delete)");
+            System.out.println("5 - Agendar entrega ou retirada");
             System.out.println("0 - Sair");
             int opcao = scanner.nextInt();
             scanner.nextLine(); // Limpar o buffer
@@ -34,6 +37,9 @@ public class Main {
                     break;
                 case 4:
                     delete(scanner);
+                    break;
+                case 5:
+                    agendar(scanner);
                     break;
                 case 0:
                     System.exit(0);
@@ -216,5 +222,61 @@ public class Main {
 
         workbook.close();
         fileIn.close();
+    }
+
+    // AGENDAR
+    private static void agendar(Scanner scanner) throws IOException {
+        System.out.print("Digite o CPF do doador: ");
+        String cpf = scanner.nextLine();
+
+        // Aqui você poderia buscar o doador pelo CPF se necessário
+        // Para simplicidade, vamos apenas criar um agendamento
+
+        System.out.print("Digite a data do agendamento (dd/MM/yyyy): ");
+        String dataString = scanner.nextLine();
+        Date dataAgendada = new Date(); // Parse a dataString para um objeto Date
+        // Adicione o código para converter a dataString em um objeto Date
+
+        System.out.print("Digite o tipo de agendamento (entrega ou retirada): ");
+        String tipo = scanner.nextLine();
+
+        // Criar um novo objeto Agendamento
+        Agendamento agendamento = new Agendamento(1, null, dataAgendada, tipo); // Adicione o objeto Doacao real
+        salvarAgendamento(agendamento);
+    }
+
+    // Método para salvar o agendamento no arquivo
+    private static void salvarAgendamento(Agendamento agendamento) throws IOException {
+        Workbook workbook;
+        Sheet sheet;
+        File file = new File(AGENDAMENTO_PATH);
+
+        if (file.exists()) {
+            FileInputStream fileIn = new FileInputStream(file);
+            workbook = new XSSFWorkbook(fileIn);
+            sheet = workbook.getSheetAt(0);
+            fileIn.close();
+        } else {
+            workbook = new XSSFWorkbook();
+            sheet = workbook.createSheet("Agendamentos");
+            Row headerRow = sheet.createRow(0);
+            headerRow.createCell(0).setCellValue("ID");
+            headerRow.createCell(1).setCellValue("Data Agendada");
+            headerRow.createCell(2).setCellValue("Tipo");
+        }
+
+        // Adiciona uma nova linha com os dados do agendamento
+        int rowCount = sheet.getLastRowNum();
+        Row dataRow = sheet.createRow(rowCount + 1);
+        dataRow.createCell(0).setCellValue(agendamento.getId());
+        dataRow.createCell(1).setCellValue(agendamento.getDataAgendada().toString());
+        dataRow.createCell(2).setCellValue(agendamento.getTipo());
+
+        try (FileOutputStream fileOut = new FileOutputStream(AGENDAMENTO_PATH)) {
+            workbook.write(fileOut);
+            System.out.println("Agendamento salvo com sucesso.");
+        } finally {
+            workbook.close();
+        }
     }
 }
