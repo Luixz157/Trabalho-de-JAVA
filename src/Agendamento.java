@@ -2,14 +2,14 @@ import java.util.Date;
 
 public class Agendamento {
     private int id;
-    private Doacao doacao;
+    private Doador doador;
     private Date dataAgendada;
     private String tipo; // "entrega" ou "retirada"
 
     // Construtor
-    public Agendamento(int id, Doacao doacao, Date dataAgendada, String tipo) {
+    public Agendamento(int id, Doador doador, Date dataAgendada, String tipo) {
         this.id = id;
-        this.doacao = doacao;
+        this.doador = doador;
         this.dataAgendada = dataAgendada;
         this.tipo = tipo;
     }
@@ -32,12 +32,12 @@ public class Agendamento {
         this.id = id;
     }
 
-    public Doacao getDoacao() {
-        return doacao;
+    public Doador getDoacao() {
+        return doador;
     }
 
-    public void setDoacao(Doacao doacao) {
-        this.doacao = doacao;
+    public void setDoacao(Doador doador) {
+        this.doador = doador;
     }
 
     public Date getDataAgendada() {

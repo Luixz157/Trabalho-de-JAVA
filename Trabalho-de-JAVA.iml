@@ -13,5 +13,6 @@
     <orderEntry type="library" name="commons-io-2.17.0-sources1" level="project" />
     <orderEntry type="library" name="poi-examples-5.2.3" level="project" />
     <orderEntry type="library" name="ant-1.10.14" level="project" />
+    <orderEntry type="library" name="src" level="project" />
   </component>
 </module>
