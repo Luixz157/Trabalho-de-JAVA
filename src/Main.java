@@ -58,11 +58,17 @@ public class Main {
         System.out.print("Digite seu endereço: ");
         String endereco = scanner.nextLine();
 
+        // Criar um novo objeto Doador
+        Doador doador = new Doador(nome, cpf, email, telefone, endereco);
+        salvarDoador(doador);
+    }
+
+    // Método para salvar o doador no arquivo
+    private static void salvarDoador(Doador doador) throws IOException {
         Workbook workbook;
         Sheet sheet;
         File file = new File(FILE_PATH);
 
-        // Verifica se o arquivo já existe, caso não exista cria um novo
         if (file.exists()) {
             FileInputStream fileIn = new FileInputStream(file);
             workbook = new XSSFWorkbook(fileIn);
@@ -71,8 +77,6 @@ public class Main {
         } else {
             workbook = new XSSFWorkbook();
             sheet = workbook.createSheet("Usuários");
-
-            // Cabeçalho
             Row headerRow = sheet.createRow(0);
             headerRow.createCell(0).setCellValue("Nome");
             headerRow.createCell(1).setCellValue("CPF");
@@ -81,16 +85,15 @@ public class Main {
             headerRow.createCell(4).setCellValue("Endereço");
         }
 
-        // Adiciona uma nova linha com os dados
+        // Adiciona uma nova linha com os dados do doador
         int rowCount = sheet.getLastRowNum();
         Row dataRow = sheet.createRow(rowCount + 1);
-        dataRow.createCell(0).setCellValue(nome);
-        dataRow.createCell(1).setCellValue(cpf);
-        dataRow.createCell(2).setCellValue(email);
-        dataRow.createCell(3).setCellValue(telefone);
-        dataRow.createCell(4).setCellValue(endereco);
+        dataRow.createCell(0).setCellValue(doador.getNome());
+        dataRow.createCell(1).setCellValue(doador.getCpf());
+        dataRow.createCell(2).setCellValue(doador.getEmail());
+        dataRow.createCell(3).setCellValue(doador.getTelefone());
+        dataRow.createCell(4).setCellValue(doador.getEndereco());
 
-        // Salvar no arquivo
         try (FileOutputStream fileOut = new FileOutputStream(FILE_PATH)) {
             workbook.write(fileOut);
             System.out.println("Usuário salvo com sucesso.");
