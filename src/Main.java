@@ -2,14 +2,19 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     private static final String FILE_PATH = "usuarios.xlsx";
     private static final String AGENDAMENTO_PATH = "agendamentos.xlsx";
+
+    // Lista para armazenar itens de doação
+    private static List<ItemDoacao> itens = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
@@ -21,6 +26,8 @@ public class Main {
             System.out.println("3 - Atualizar um usuário (Update)");
             System.out.println("4 - Excluir um usuário (Delete)");
             System.out.println("5 - Agendar entrega ou retirada");
+            System.out.println("6 - Adicionar item de doação");
+            System.out.println("7 - Listar itens de doação");
             System.out.println("0 - Sair");
             int opcao = scanner.nextInt();
             scanner.nextLine(); // Limpar o buffer
@@ -40,6 +47,12 @@ public class Main {
                     break;
                 case 5:
                     agendar(scanner);
+                    break;
+                case 6:
+                    adicionarItemDoacao(scanner);
+                    break;
+                case 7:
+                    ItemDoacao.listarItens();
                     break;
                 case 0:
                     System.exit(0);
@@ -230,7 +243,6 @@ public class Main {
         String cpf = scanner.nextLine();
 
         // Aqui você poderia buscar o doador pelo CPF se necessário
-        // Para simplicidade, vamos apenas criar um agendamento
 
         System.out.print("Digite a data do agendamento (dd/MM/yyyy): ");
         String dataString = scanner.nextLine();
@@ -279,4 +291,76 @@ public class Main {
             workbook.close();
         }
     }
+
+    // Classe interna ItemDoacao
+    public static class ItemDoacao {
+        private int id;
+        private String nome;
+        private String descricao;
+        private String categoria;
+
+        public ItemDoacao(int id, String nome, String descricao, String categoria) {
+            this.id = id;
+            this.nome = nome;
+            this.descricao = descricao;
+            this.categoria = categoria;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public String getNome() {
+            return nome;
+        }
+
+        public String getDescricao() {
+            return descricao;
+        }
+
+        public String getCategoria() {
+            return categoria;
+        }
+
+        public static void listarItens() {
+            if (itens.isEmpty()) {
+                System.out.println("Nenhum item de doação cadastrado.");
+                return;
+            }
+            for (ItemDoacao item : itens) {
+                System.out.println(item);
+            }
+        }
+
+        @Override
+        public String toString() {
+            return "ItemDoacao{" +
+                    "id=" + id +
+                    ", nome='" + nome + '\'' +
+                    ", descricao='" + descricao + '\'' +
+                    ", categoria='" + categoria + '\'' +
+                    '}';
+        }
+    }
+
+    // Método para adicionar um item de doação
+    private static void adicionarItemDoacao(Scanner scanner) {
+        System.out.print("Digite o ID do item: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Limpar o buffer
+        System.out.print("Digite o nome do item: ");
+        String nome = scanner.nextLine();
+        System.out.print("Digite uma descrição do item: ");
+        String descricao = scanner.nextLine();
+        System.out.print("Digite a categoria do item: ");
+        String categoria = scanner.nextLine();
+
+        // Criar um novo objeto ItemDoacao e adicioná-lo à lista
+        ItemDoacao novoItem = new ItemDoacao(id, nome, descricao, categoria);
+        itens.add(novoItem); // Adiciona o item à lista
+        System.out.println("Item de doação adicionado com sucesso.");
+    }
+
+
+
 }
