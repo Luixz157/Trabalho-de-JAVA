@@ -1,23 +1,4 @@
-<<<<<<< HEAD
-## Getting Started
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
-=======
 # Trabalho-de-JAVA
 Este sistema foi desenvolvido para facilitar o processo de agendamento de doações para Organizações Não Governamentais (ONGs). O objetivo é permitir que os doadores possam registrar suas informações, listar os itens que irão doar (roupas, alimentos, etc.), e agendar o local e a data da entrega ou retirada da doação.
 
@@ -44,4 +25,4 @@ Princípios de SOLID aplicados
 - Responsabilidade Única (Single Responsibility Principle): Cada classe foi projetada para ter uma única responsabilidade. Por exemplo, a classe de doações cuida apenas da lógica relacionada às doações.
 - Inversão de Dependência (Dependency Inversion Principle): Dependências foram invertidas através de interfaces, permitindo maior flexibilidade e facilidade de manutenção.
   
->>>>>>> 4069656121947db017d2edc263880f676b99672f
+
