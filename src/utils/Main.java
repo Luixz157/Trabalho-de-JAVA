@@ -152,7 +152,7 @@ public class Main {
     }
 
     // Validação de CPF
-    private static boolean validarCPF(String cpf) {
+    public static boolean validarCPF(String cpf) {
         // Expressão regular para validar o CPF com 11 dígitos numéricos
         String regex = "\\d{11}";
         if (cpf.matches(regex)) {
@@ -164,7 +164,7 @@ public class Main {
     }
 
     // Validação de Data
-    private static Date validarData(String data) {
+    public static Date validarData(String data) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         sdf.setLenient(false); // Isso força a validação estrita da data
         try {

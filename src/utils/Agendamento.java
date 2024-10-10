@@ -29,4 +29,8 @@ public class Agendamento {
     public Doador getDoador() {
         return doador;
     }
+
+    public int getId() {
+        return 0;
+    }
 }

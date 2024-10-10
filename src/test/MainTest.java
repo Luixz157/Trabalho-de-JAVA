@@ -1,5 +1,8 @@
 import org.junit.Test;
 import model.Doador;
+import service.AgendamentoEntrega;
+import service.AgendamentoRetirada;
+import utils.Agendamento;
 import utils.Main;
 
 import java.text.SimpleDateFormat;
@@ -21,7 +24,7 @@ public class MainTest {
         assertFalse(Main.validarCPF("1234567"));  // CPF inválido
     }
 
-    // Teste para CPF inválido (com letras)
+    // Teste para CPF inválido (com letras)g
     @Test
     public void testCPFComLetras() {
         assertFalse(Main.validarCPF("12345a78901"));  // CPF inválido
